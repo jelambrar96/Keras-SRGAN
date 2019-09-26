@@ -12,7 +12,8 @@ from skimage import data, io, filters
 import numpy as np
 from numpy import array
 from numpy.random import randint
-from scipy.misc import imresize
+# from scipy.misc import imresize
+from cv2 import resize as imresize
 import os
 import sys
 
@@ -41,7 +42,8 @@ def lr_images(images_real , downscale):
     
     images = []
     for img in  range(len(images_real)):
-        images.append(imresize(images_real[img], [images_real[img].shape[0]//downscale,images_real[img].shape[1]//downscale], interp='bicubic', mode=None))
+        images.append(imresize(images_real[img], (images_real[img].shape[0]//downscale,images_real[img].shape[1]//downscale)))
+        # images.append(imresize(images_real[img], [images_real[img].shape[0]//downscale,images_real[img].shape[1]//downscale], interp='bicubic', mode=None))
     images_lr = array(images)
     return images_lr
     

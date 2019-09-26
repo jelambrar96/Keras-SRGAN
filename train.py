@@ -20,7 +20,7 @@ np.random.seed(10)
 # Better to use downscale factor as 4
 downscale_factor = 4
 # Remember to change image shape if you are having different size of images
-image_shape = (384,384,3)
+image_shape = (256,256,3)
 
 # Combined network
 def get_gan_network(discriminator, shape, generator, optimizer, vgg_loss):
@@ -45,6 +45,9 @@ def train(epochs, batch_size, input_dir, output_dir, model_save_dir, number_of_i
     batch_count = int(x_train_hr.shape[0] / batch_size)
     shape = (image_shape[0]//downscale_factor, image_shape[1]//downscale_factor, image_shape[2])
     
+    # generator = Generator(shape).generator(64, 16)
+    # discriminator = Discriminator(image_shape).discriminator(filters=32)
+
     generator = Generator(shape).generator()
     discriminator = Discriminator(image_shape).discriminator()
 
