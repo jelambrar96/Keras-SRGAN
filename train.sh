@@ -3,11 +3,11 @@
 DATE_STR=$(date +%Y-%m-%d_%H-%M)
 
 MODEL_SAVE="MODEL_$DATE_STR"
-OUTPUT_SAVE="OUTPUT_$DATE"
+OUTPUT_SAVE="OUTPUT_$DATE_STR"
 LOG_SAVE="LOG_$DATE.txt"
 
-mkdir -p MODEL_SAVE
-mkdir -p OUTPUT_SAVE
+mkdir -p $MODEL_SAVE
+mkdir -p $OUTPUT_SAVE
 
 python train.py \
 --input_dir="dataset" \
@@ -15,8 +15,8 @@ python train.py \
 --number_of_images=512
 
 --input_dir="dataset" \
---output_dir=OUTPUT_SAVE \
---model_save_dir=MODEL_SAVE \
+--output_dir=$OUTPUT_SAVE \
+--model_save_dir=$MODEL_SAVE \
 --batch_size=1 \
 --epochs=1000 \
 --number_of_images=256 \
